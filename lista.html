@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="todo-container">
+        <h1>Lista de Tareas</h1>
+
+        <div class="add-task">
+            <input type="text" id="task-input" placeholder="Nueva tarea..." />
+            <button id="add-task-btn">Agregar</button>
+        </div>
+
+        <ul class="task-list" id="task-list">
+        </ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const taskList = document.getElementById('task-list');
+
+        addTaskBtn.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task-item';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+
+                const label = document.createElement('label');
+                label.textContent = taskText;
+
+                taskItem.appendChild(checkbox);
+                taskItem.appendChild(label);
+
+                taskList.appendChild(taskItem);
+
+                taskInput.value = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
